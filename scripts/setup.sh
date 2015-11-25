@@ -73,4 +73,4 @@ configs:
 EOF
 )
 
-echo "$VCONFIG" > ../config/config.yaml
+echo "$VCONFIG" > config/config.yaml

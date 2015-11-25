@@ -1,11 +1,11 @@
 ---
 configs:
-  use: 'devbox'
-  devbox:
-    vm_ip: '192.168.178.88'
-    vm_hostname: 'devbox'
-    vm_url: 'devbox.local'
-    vm_name: 'devbox'
+  use: 'ml-dev'
+  ml-dev:
+    vm_ip: '192.168.178.100'
+    vm_hostname: 'ml-dev'
+    vm_url: 'ml.dev'
+    vm_name: 'ml-dev'
     db_name: 'testdb'
     db_user: 'dbuser'
     db_pass: 'passwort'
