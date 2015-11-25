@@ -1,0 +1,6 @@
+.vagrant
+sqldump/*.sql
+www/ioncube
+www/adminer
+www/html/*.html
+/.project
