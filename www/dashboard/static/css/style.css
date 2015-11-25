@@ -46,6 +46,7 @@ canvas{
     min-height: 100vh;
     position: absolute;
     padding: 15px;
+    background-attachment: fixed;
 }
 
 #wrapper.toggled #page-content-wrapper {
