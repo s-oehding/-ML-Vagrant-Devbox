@@ -4,7 +4,7 @@
   <div class="col-sm-12 wrap">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h2 class="panel-title">Database Stuff</h2>
+				<h2 class="panel-title">Database stuff</h2>
 			</div>
 			<div class="panel-body">
 	    <table class="table table-responsive table-striped table-hover">
@@ -19,6 +19,10 @@
 	      <tr>
 	      <td>MySQLi status</td>
 	        <td><i class="fa fa-<?php echo ($mysqli_running ? 'check success' : 'times danger'); ?>"></i></td>
+	      </tr>
+	      <tr>
+	      <td>PDO status</td>
+	        <td><i class="fa fa-<?php echo ($pdo_running ? 'check success' : 'times danger'); ?>"></i></td>
 	      </tr>
 	      <tr>
 	        <td>MySQL Version</td>

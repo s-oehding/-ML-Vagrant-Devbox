@@ -9,6 +9,7 @@ class Database extends Controller {
 		$template->set('mysql_exists', $checkMysql['exists']);
 		$template->set('mysql_running', $checkMysql['running']);
 		$template->set('mysqli_running', $checkMysql['running']);
+		$template->set('pdo_running', $checkMysql['pdo']);
 		$template->set('mysql_version', $checkMysql['version']);
 		$template->render();
 	}
@@ -30,6 +31,11 @@ class Database extends Controller {
 		  	$return['running'] = FALSE;
 		} else {
 			$return['version'] = $mysqli->server_info;
+		}
+		if (class_exists('PDO')){
+			$return['pdo'] = TRUE;
+		} else {
+			$return['pdo'] = FALSE;
 		}
 		$mysqli->close();
 		}

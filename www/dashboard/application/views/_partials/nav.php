@@ -16,6 +16,9 @@
             <a href="/server" title="Server" name="server" class="ajaxtrigger"><i class="fa fa-server"></i>Server</a>
         </li>
         <li>
+            <a href="/system" title="System" name="system" class="ajaxtrigger"><i class="fa fa-server"></i>System</a>
+        </li>
+        <li>
             <hr>
         </li>
         <li>
