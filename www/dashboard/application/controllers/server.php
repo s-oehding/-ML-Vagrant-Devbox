@@ -1,7 +1,7 @@
 <?php
 
 class Server extends Controller {
-	
+
 	function index()
 	{
 		$template = $this->loadView('server_view');
@@ -19,6 +19,11 @@ class Server extends Controller {
 	{
 		$functions = get_extension_funcs($module_name);
 		return json_encode($functions);
+	}
+
+	function ()
+	{
+		return json_encode(apache_get_modules());
 	}
 }
 

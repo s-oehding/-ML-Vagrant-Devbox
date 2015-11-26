@@ -1,19 +1,30 @@
 <?php include('_partials/header.php'); ?>
-	
 <div class="container-fluid">
-  <div class="col-sm-12 wrap">
-  <h2>PHP Extensions</h2>
-    <table class="table table-responsive table-striped table-hover">
+	<div class="col-sm-12 wrap">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">PHP Extensions</h3>
+			</div>
+			<div class="panel-body">
+		    <table class="table table-responsive table-striped table-hover">
 
-    <?php foreach ($phpExtensions as $key=>$extension) : ?>
-    	<tr>
-    		<td><?php echo $key ?></td>
-    		<td><a class="trigger" name="<?php echo $extension ?>" href="#"><?php echo $extension ?></a></td>
-		</tr>
-    <?php endforeach ?>
+		    <?php foreach ($phpExtensions as $key=>$extension) : ?>
+		    	<tr class="paginate">
+		    		<td><?php echo $key ?></td>
+		    		<td><a class="trigger" name="<?php echo $extension ?>" href="#"><?php echo $extension ?></a></td>
+				</tr>
+		    <?php endforeach ?>
 
-    </table>
-  </div>
+		    </table>
+  		</div>
+			<div class="panel-footer">
+				<div class="text-right">
+					<ul id="page-nav">
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <div class="modal fade" id="myModal">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="js" lang="en">
 
 <head>
 
@@ -35,6 +35,7 @@
     	<?php include('nav.php'); ?>
         <!-- Page Content -->
         <div id="page-content-wrapper">
+          <div id="preloader">
             <div class="spinner">
               <div class="rect1"></div>
               <div class="rect2"></div>
@@ -42,3 +43,4 @@
               <div class="rect4"></div>
               <div class="rect5"></div>
             </div>
+          </div>

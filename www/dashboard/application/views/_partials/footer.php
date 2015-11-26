@@ -10,6 +10,9 @@
 
     <!-- AjaxNav -->
     <script type="text/javascript" src="/static/js/ajax.js"></script>
+    <script type="text/javascript" src="/static/js/vm.js"></script>
+
+    <script type="text/javascript" src="/static/js/simplePaginations.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.4.0/trianglify.min.js"></script>
 		<script>
