@@ -21,7 +21,7 @@ class Server extends Controller {
 		return json_encode($functions);
 	}
 
-	function ()
+	function getApacheModules()
 	{
 		return json_encode(apache_get_modules());
 	}
