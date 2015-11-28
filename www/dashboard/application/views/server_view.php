@@ -43,4 +43,7 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+
+<script type="text/javascript" src="/static/js/server.js"></script>
+<script type="text/javascript" src="/static/js/simplePaginations.js"></script>
 <?php include('_partials/footer.php'); ?>

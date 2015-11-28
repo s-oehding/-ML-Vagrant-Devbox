@@ -3,7 +3,7 @@
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
             <a href="#">
-                <?php echo gethostname(); ?>
+                <i class="vm-icon fa fa-cube"></i> <?php echo gethostname(); ?>
             </a>
         </li>
         <li>
@@ -16,7 +16,7 @@
             <a href="/server" title="Server" name="server" class="ajaxtrigger"><i class="fa fa-server"></i>Server</a>
         </li>
         <li>
-            <a href="/system" title="System" name="system" class="ajaxtrigger"><i class="fa fa-server"></i>System</a>
+            <a href="/vm" title="System" name="system" class="ajaxtrigger"><i class="fa fa-server"></i>System</a>
         </li>
         <li>
             <hr>
