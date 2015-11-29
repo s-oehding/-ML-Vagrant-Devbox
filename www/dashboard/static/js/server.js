@@ -1,19 +1,19 @@
 $('a.trigger').click(function (event) {
     extension = $(this).attr('name');
     $.ajax({
-        type:"POST",
-        url:"server/getExtensionFunctions/"+extension,
-        data:{'dataString':extension},
-        success:function (data) {
+        type: "POST",
+        url: "server/getExtensionFunctions/" + extension,
+        data: {'dataString': extension},
+        success: function (data) {
             // console.log(data);
             var parsedData = $.parseJSON(data);
             var i = 1;
             $('.modal-header').empty();
-            $('.modal-header').append("<h4 class='modal-title'>"+extension+" functions</h4> ");
+            $('.modal-header').append("<h4 class='modal-title'>" + extension + " functions</h4> ");
             $('.modal-body').empty();
-            $('.modal-body').append("<table id='functions' class='table table-responsive table-striped table-hover'>" );
-            jQuery.each(parsedData, function(index, value){
-                $('#functions').append("<tr><td>"+i+"</td><td>"+value+"</td></tr>");
+            $('.modal-body').append("<table id='functions' class='table table-responsive table-striped table-hover'>");
+            jQuery.each(parsedData, function (index, value) {
+                $('#functions').append("<tr><td>" + i + "</td><td>" + value + "</td></tr>");
                 i++
             });
             $('.modal-body').append("</table>");
@@ -24,20 +24,20 @@ $('a.trigger').click(function (event) {
     event.preventDefault();
 });
 
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
 
-  // site preloader -- also uncomment the div in the header and the css style for #preloader
-  $(window).load(function(){
-  	$('#preloader').fadeOut('slow');
-  });
-  $('a.ajaxtrigger').click(function (event) {
-      $('#preloader').fadeIn('fast');
-  });
+    // site preloader -- also uncomment the div in the header and the css style for #preloader
+    $(window).load(function () {
+        $('#preloader').fadeOut('slow');
+    });
+    $('a.ajaxtrigger').click(function (event) {
+        $('#preloader').fadeIn('fast');
+    });
 
 });
 
 // Pagination
-jQuery(function($) {
+jQuery(function ($) {
     // Grab whatever we need to paginate
     var pageParts = $(".paginate");
 
@@ -57,7 +57,7 @@ jQuery(function($) {
         // We implement the actual pagination
         //   in this next function. It runs on
         //   the event that a user changes page
-        onPageClick: function(pageNum) {
+        onPageClick: function (pageNum) {
             // Which page parts do we show?
             var start = perPage * (pageNum - 1);
             var end = start + perPage;

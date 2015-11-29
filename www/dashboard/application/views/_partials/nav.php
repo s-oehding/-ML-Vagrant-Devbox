@@ -1,4 +1,4 @@
- <!-- Sidebar -->
+<!-- Sidebar -->
 <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
@@ -22,7 +22,8 @@
             <hr>
         </li>
         <li>
-            <a href="/settings" title="Settings" name="settings" class="ajaxtrigger"><i class="fa fa-cog"></i>Settings</a>
+            <a href="/settings" title="Settings" name="settings" class="ajaxtrigger"><i
+                    class="fa fa-cog"></i>Settings</a>
         </li>
     </ul>
 </div>

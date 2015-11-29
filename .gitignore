@@ -3,5 +3,6 @@ sqldump/*.sql
 www/ioncube
 www/adminer
 www/html/*.html
+www/dashboard/.idea
 www/shopware/*
 /.project
