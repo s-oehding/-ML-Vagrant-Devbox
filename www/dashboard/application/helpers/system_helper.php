@@ -93,6 +93,17 @@ class System_helper
 
 
     /**
+     * Returns System Uptime
+     *
+     * @return  timestamp uptime
+     */
+    function getUptime()
+    {
+        $uptime = system("uptime");
+        return $uptime;
+    }
+
+    /**
      * Returns CPU cores number
      *
      * @return  int  Number of cores

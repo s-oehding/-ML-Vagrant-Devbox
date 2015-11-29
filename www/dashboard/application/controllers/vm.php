@@ -10,6 +10,8 @@ class Vm extends Controller
     {
         $template = $this->loadView('vm_view');
         $template->set('memoryUsage', $this->getMemoryUsage());
+        $template->set('systemInfo', $this->getSystemInformation());
+        $template->set('services', $this->getServices());
         $template->render();
     }
 
@@ -44,12 +46,6 @@ class Vm extends Controller
 
         // print_r($cpu);
         return json_encode($cpu);
-    }
-
-    function getUptime()
-    {
-        $uptime = system("uptime");
-        return $uptime;
     }
 
     function getCpuInfo()
@@ -106,7 +102,7 @@ class Vm extends Controller
             'current_users' => $current_users,
             'server_date' => $server_date,
         );
-        print_r($datas);
+        return $datas;
     }
 
     function getServices()
@@ -141,7 +137,7 @@ class Vm extends Controller
         }
 
 
-        echo json_encode($datas);
+        return $datas;
     }
 }
 

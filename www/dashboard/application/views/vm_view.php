@@ -53,9 +53,78 @@
             <div class="panel-footer">
             </div>
         </div>
-    <pre>
-      <div id="cpu-chart" style="height: 250px;"></div>
-    </pre>
+
+    </div>
+      <div class="col-md-6 wrap">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">System Information</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-responsive table-striped table-hover">
+
+                    <?php foreach ($systemInfo as $key => $item) : ?>
+                        <tr>
+                            <td><?php echo $key ?></td>
+                            <td><?php echo $item ?></td>
+                        </tr>
+                    <?php endforeach ?>
+
+                </table>
+            </div>
+            <div class="panel-footer">
+                <div class="text-right">
+                    <ul id="page-nav">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+      <div class="col-md-6 wrap">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">System Services</h3>
+            </div>
+            <div class="panel-body">
+              <?php foreach ($services as $service) : ?>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><?php echo $service['name'];?></h4>
+                    </div>
+                    <div class="panel-body">
+                      <table class="table table-responsive table-striped table-hover">
+                        <thead>
+                          <tr>
+                            <th>
+                              Port:
+                            </th>
+                            <th>
+                              Status:
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <?php echo $service['port'];?>
+                            </td>
+                            <td>
+                              <div class="label label-<?php echo($service['status'] ? 'success' : 'danger'); ?> text-right"><?php echo($service['status'] ? 'running' : 'error'); ?></div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+              <?php endforeach ?>
+            </div>
+            <div class="panel-footer">
+                <div class="text-right">
+                    <ul id="page-nav">
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
