@@ -1,10 +1,11 @@
 <?php
 
-require_once(APP_DIR . 'helpers/system_helper.php');
+
 
 
 class Vm extends Controller
 {
+
 
     function index()
     {
@@ -107,7 +108,7 @@ class Vm extends Controller
 
     function getServices()
     {
-
+    	$this->loadHelper('system_helper');
         $helper = new System_helper();
 
         $datas = array();
