@@ -16,12 +16,20 @@ debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_again pa
 
 # Install packages
 # --------------------
-apt-get update
+apt-get -qq update
 apt-get -y install apache2
+echo "ServerName localhost" >> /etc/apache2/apache2.conf
 apt-get -y install php5
 apt-get -y install libapache2-mod-php5
 apt-get -y install php5-mysql php5-curl php5-dev php5-gd php5-intl php-pear php5-imap php5-mcrypt php5-ming php5-ps php5-pspell php5-recode php5-snmp php5-sqlite php5-tidy php5-xmlrpc php5-xsl php-apc
-apt-get -y install build-essential ruby1.9.1-dev libsqlite3-dev
+
+apt-get install -y python-software-properties
+apt-add-repository ppa:brightbox/ruby-ng
+apt-get -qq update
+
+apt-get install -y ruby2.2 ruby-switch
+ruby-switch --set ruby2.2
+
 apt-get -y install git pv
 apt-get -y install tofrodos
 
@@ -37,18 +45,21 @@ dpkg-reconfigure --frontend noninteractive tzdata
 
 # Apache changes
 # --------------------
-echo "ServerName localhost" >> /etc/apache2/apache2.conf
 # create virtualhosts
 fromdos /var/apache_configs/adminer.sh
 fromdos /var/apache_configs/dashboard.sh
+fromdos /var/apache_configs/mail.sh
 fromdos /var/apache_configs/shopware.sh
 sh /var/apache_configs/adminer.sh $vm_url
 sh /var/apache_configs/dashboard.sh $vm_url
+sh /var/apache_configs/mail.sh $vm_url
 sh /var/apache_configs/shopware.sh $vm_url
 
 rm /var/www/html/index.html
 
 a2enmod rewrite
+a2enmod proxy
+a2enmod proxy_http
 service apache2 restart
 
 # Setup database
