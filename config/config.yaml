@@ -1,11 +1,11 @@
 ---
 configs:
-  use: 'devbox'
-  devbox:
-    vm_ip: '192.168.178.88'
-    vm_hostname: 'devbox'
-    vm_url: 'devbox.local'
-    vm_name: 'devbox'
-    db_name: 'testdb'
+  use: 'sw-dev'
+  sw-dev:
+    vm_ip: '192.168.178.111'
+    vm_hostname: 'sw-dev'
+    vm_url: 'sw.dev'
+    vm_name: 'sw-dev'
+    db_name: 'shopware'
     db_user: 'dbuser'
     db_pass: 'passwort'

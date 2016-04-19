@@ -16,19 +16,18 @@ debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_again pa
 
 # Install packages
 # --------------------
-apt-get -qq update
+apt-get -q update
 apt-get -y install apache2
 echo "ServerName localhost" >> /etc/apache2/apache2.conf
 apt-get -y install php5
 apt-get -y install libapache2-mod-php5
 apt-get -y install php5-mysql php5-curl php5-dev php5-gd php5-intl php-pear php5-imap php5-mcrypt php5-ming php5-ps php5-pspell php5-recode php5-snmp php5-sqlite php5-tidy php5-xmlrpc php5-xsl php-apc
+apt-get -y install libsqlite3-dev
+apt-get -y install python-software-properties
 
-apt-get install -y python-software-properties
-apt-add-repository ppa:brightbox/ruby-ng
-apt-get -qq update
-
-apt-get install -y ruby2.2 ruby-switch
-ruby-switch --set ruby2.2
+apt-add-repository ppa:brightbox/ruby-ng-experimental &&
+apt-get -q update
+apt-get install -y ruby2.0 ruby2.0-dev ruby2.0-doc
 
 apt-get -y install git pv
 apt-get -y install tofrodos
@@ -45,6 +44,9 @@ dpkg-reconfigure --frontend noninteractive tzdata
 
 # Apache changes
 # --------------------
+a2enmod rewrite
+a2enmod proxy
+a2enmod proxy_http
 # create virtualhosts
 fromdos /var/apache_configs/adminer.sh
 fromdos /var/apache_configs/dashboard.sh
@@ -52,14 +54,11 @@ fromdos /var/apache_configs/mail.sh
 fromdos /var/apache_configs/shopware.sh
 sh /var/apache_configs/adminer.sh $vm_url
 sh /var/apache_configs/dashboard.sh $vm_url
-sh /var/apache_configs/mail.sh $vm_url
+sh /var/apache_configs/mail.sh $vm_url $vm_ip
 sh /var/apache_configs/shopware.sh $vm_url
 
 rm /var/www/html/index.html
 
-a2enmod rewrite
-a2enmod proxy
-a2enmod proxy_http
 service apache2 restart
 
 # Setup database
@@ -76,8 +75,8 @@ sleep 10
 # Install Mailcatcher
 # --------------------
 echo "Installing mailcatcher"
-gem install mailcatcher --no-ri --no-rdoc
-mailcatcher --http-ip=$vm_ip
+gem install mailcatcher
+# mailcatcher --http-ip=$vm_ip
 
 # Configure PHP
 # --------------------
@@ -93,7 +92,7 @@ sudo sed -i '1izend_extension = /usr/lib/php5/20121212/ioncube_loader_lin_5.5.so
 # --------------------
 cd /var/www
 if [ ! -d "ioncube" ]; then
-  wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
+  wget -q http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
   tar xvfz ioncube_loaders_lin_x86-64.tar.gz
   rm ioncube_loaders_lin_x86-64.tar.gz
   sudo cp /var/www/ioncube/ioncube_loader_lin_5.5.so /usr/lib/php5/20121212
@@ -109,7 +108,7 @@ if [ ! -d "adminer" ]; then
   echo "Adminer not found at /var/www and will be installed..."
   sleep 5
   mkdir /var/www/adminer
-  wget -O /var/www/adminer/index.php http://downloads.sourceforge.net/adminer/adminer-4.0.3.php
+  wget -qO /var/www/adminer/index.php http://downloads.sourceforge.net/adminer/adminer-4.0.3.php
 
   echo "Adminer installed... Use Use http://adminer.$vm_url/ URL to use it."
 fi

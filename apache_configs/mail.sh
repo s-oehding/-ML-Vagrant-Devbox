@@ -7,12 +7,12 @@ VHOST=$(cat <<EOF
     ProxyPreserveHost On
     ProxyRequests Off
     ProxyVia Off
-    ProxyPass / $1:1080/
-    ProxyPassReverse / $1:1080/
+    ProxyPass / http://127.0.0.1:1080/
+    ProxyPassReverse / http://127.0.0.1:1080/
 </VirtualHost>
 EOF
 )
 
-echo "$VHOST" > /etc/apache2/sites-available/adminer.conf
+echo "$VHOST" > /etc/apache2/sites-available/mail.conf
 a2ensite mail
 service apache2 reload
