@@ -7,8 +7,8 @@ VHOST=$(cat <<EOF
     ProxyPreserveHost On
     ProxyRequests Off
     ProxyVia Off
-    ProxyPass / http://127.0.0.1:1080/
-    ProxyPassReverse / http://127.0.0.1:1080/
+    ProxyPass / http://$2:1080/
+    ProxyPassReverse / http://$2:1080/
 </VirtualHost>
 EOF
 )
