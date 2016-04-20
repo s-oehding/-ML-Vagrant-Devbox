@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
         mail = "mail."+vagrant_config['vm_url']
         shopware = "shopware."+vagrant_config['vm_url']
         # node.hostmanager.aliases = vagrant_config['vm_url']
-        node.hostmanager.aliases = [url, adminer, dashboard, shopware]
+        node.hostmanager.aliases = [url, adminer, dashboard, mail, shopware]
     end
 
 
