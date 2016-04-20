@@ -1,11 +1,11 @@
 ---
 configs:
-  use: 'asd'
-  asd:
-    vm_ip: '192.168.178.225'
-    vm_hostname: 'asd'
-    vm_url: 'asd.dev'
-    vm_name: 'asd'
-    db_name: 'asd'
-    db_user: 'asd'
-    db_pass: 'asd'
+  use: 'swdev'
+  swdev:
+    vm_ip: '192.168.178.178'
+    vm_hostname: 'swdev'
+    vm_url: 'sw.dev'
+    vm_name: 'swdev'
+    db_name: 'shopware'
+    db_user: 'admin'
+    db_pass: 'passwort'

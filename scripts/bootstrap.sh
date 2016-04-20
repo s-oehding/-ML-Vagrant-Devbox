@@ -16,7 +16,7 @@ debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_again pa
 
 # Install packages
 # --------------------
-apt-get -q update
+apt-get -qq update
 apt-get -y install apache2
 echo "ServerName localhost" >> /etc/apache2/apache2.conf
 apt-get -y install php5
@@ -26,7 +26,7 @@ apt-get -y install libsqlite3-dev
 apt-get -y install python-software-properties
 
 apt-add-repository ppa:brightbox/ruby-ng-experimental &&
-apt-get -q update
+apt-get -qq update
 apt-get install -y ruby2.0 ruby2.0-dev ruby2.0-doc
 
 apt-get -y install git pv
