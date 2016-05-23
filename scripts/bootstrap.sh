@@ -16,16 +16,17 @@ debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_again pa
 
 # Install packages
 # --------------------
-apt-get -yqq update
-add-apt-repository ppa:ondrej/php5-5.6
-apt-get -yqq update
+apt-get -qq update
+add-apt-repository -y ppa:ondrej/php
+apt-get -qq update
 apt-get -y install apache2
 echo "ServerName localhost" >> /etc/apache2/apache2.conf
-apt-get -y install php5
-apt-get -y install libapache2-mod-php5
-apt-get -y install php5-mysql php5-curl php5-dev php5-gd php5-intl php-pear php5-imap php5-mcrypt php5-ming php5-ps php5-pspell php5-recode php5-snmp php5-sqlite php5-tidy php5-xmlrpc php5-xsl php-apc
+apt-get -y install php5.6-fpm
+apt-get -y install libapache2-mod-php5.6
+apt-get -y install php5.6-mysql php5.6-curl php5.6-dev php5.6-gd php5.6-intl php-pear php5.6-imap php5.6-mcrypt php5.6-ming php5.6-ps php5.6-pspell php5.6-recode php5.6-snmp php5.6-sqlite php5.6-tidy php5.6-xmlrpc php5.6-xsl php5.6-apc php5.6-simplexml php5.6-gd php5.6-mbstring php5.6-zip
 apt-get -y install libsqlite3-dev
 apt-get -y install python-software-properties
+apt-get -y install build-essential
 
 apt-add-repository ppa:brightbox/ruby-ng-experimental &&
 apt-get -qq update
@@ -37,7 +38,7 @@ apt-get -y install tofrodos
 # Install Mysql
 # Ignore the post install questions
 export DEBIAN_FRONTEND=noninteractive
-apt-get -q -y install mysql-server-5.5
+apt-get -q -y install mysql-server-5.6
 
 # Set timezone
 # --------------------
@@ -82,13 +83,13 @@ gem install mailcatcher
 
 # Configure PHP
 # --------------------
-sed -i '/;sendmail_path =/c sendmail_path = "/usr/local/bin/catchmail"' /etc/php5/apache2/php.ini
-sed -i '/display_errors = Off/c display_errors = On' /etc/php5/apache2/php.ini
-sed -i '/error_reporting = E_ALL & ~E_DEPRECATED/c error_reporting = E_ALL | E_STRICT' /etc/php5/apache2/php.ini
-sed -i '/html_errors = Off/c html_errors = On' /etc/php5/apache2/php.ini
-sed -i '/memory_limit = 128M/c memory_limit = 512M' /etc/php5/apache2/php.ini
-sed -i '/upload_max_filesize = 2M/c upload_max_filesize = 6M' /etc/php5/apache2/php.ini
-sudo sed -i '1izend_extension = /usr/lib/php5/20121212/ioncube_loader_lin_5.5.so' /etc/php5/apache2/php.ini
+sed -i '/;sendmail_path =/c sendmail_path = "/usr/local/bin/catchmail"' /etc/php/5.6/apache2/php.ini
+sed -i '/display_errors = Off/c display_errors = On' /etc/php/5.6/apache2/php.ini
+sed -i '/error_reporting = E_ALL & ~E_DEPRECATED/c error_reporting = E_ALL | E_STRICT' /etc/php/5.6/apache2/php.ini
+sed -i '/html_errors = Off/c html_errors = On' /etc/php/5.6/apache2/php.ini
+sed -i '/memory_limit = 128M/c memory_limit = 512M' /etc/php/5.6/apache2/php.ini
+sed -i '/upload_max_filesize = 2M/c upload_max_filesize = 6M' /etc/php/5.6/apache2/php.ini
+sudo sed -i '1izend_extension = /usr/lib/php/20131226/ioncube_loader_lin_5.6.so' /etc/php/5.6/apache2/php.ini
 
 # Install IonCube Loader
 # --------------------
@@ -97,9 +98,9 @@ if [ ! -d "ioncube" ]; then
   wget -q http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
   tar xvfz ioncube_loaders_lin_x86-64.tar.gz
   rm ioncube_loaders_lin_x86-64.tar.gz
-  sudo cp /var/www/ioncube/ioncube_loader_lin_5.5.so /usr/lib/php5/20121212
-  sudo touch /etc/php5/apache2/conf.d/20-ioncube.ini
-  echo "zend_extension = /usr/lib/php5/20121212/ioncube_loader_lin_5.5.so" >> /etc/php5/apache2/conf.d/20-ioncube.ini
+  sudo cp /var/www/ioncube/ioncube_loader_lin_5.6.so /usr/lib/php/20131226
+  sudo touch /etc/php/5.6/apache2/conf.d/20-ioncube.ini
+  echo "zend_extension = /usr/lib/php/20131226/ioncube_loader_lin_5.6.so" >> /etc/php/5.6/apache2/conf.d/20-ioncube.ini
 fi
 
 # Install Adminer
@@ -114,20 +115,6 @@ if [ ! -d "adminer" ]; then
 
   echo "Adminer installed... Use Use http://adminer.$vm_url/ URL to use it."
 fi
-
-# Install PimpMyLog Loganalyzer
-# --------------------
-# clear
-# cd /var/www/html
-# if [ ! -d "PimpMyLog" ]; then
-#   echo "PimpMyLog Loganalyzer not found at /var/www/html and will be installed..."
-#   sleep 5
-#   git clone https://github.com/potsky/PimpMyLog.git
-#   echo "PimpMyLog Loganalyzer installed... Use http://$vm_url/PimpMyLog/ URL to use it."
-#
-#   #set unsecure permissions
-#   sudo chmod 777 -R /var/log
-# fi
 
 # Make sure things are up and running as they should be
 # --------------------
