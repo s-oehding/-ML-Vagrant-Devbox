@@ -16,7 +16,9 @@ debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_again pa
 
 # Install packages
 # --------------------
-apt-get -qq update
+apt-get -yqq update
+add-apt-repository ppa:ondrej/php5-5.6
+apt-get -yqq update
 apt-get -y install apache2
 echo "ServerName localhost" >> /etc/apache2/apache2.conf
 apt-get -y install php5
